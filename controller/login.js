@@ -5,7 +5,7 @@
  * @created 8/06/2019
  * 
  */
-
+  
 const bcrypt = require('bcrypt');
  const jwt = require('jsonwebtoken');
  let status = require('../response/status');
