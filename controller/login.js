@@ -29,8 +29,7 @@ let refreshTokenList={};
             password: req.body.password,
             estado: true
         }
-        console.log(userdata);
-
+        
         let usuario = await ModeloUsuario.verifyUser(userdata);
         
         if(usuario.length==0)return status.errorNotFound(res,'usuario incorrecto');
