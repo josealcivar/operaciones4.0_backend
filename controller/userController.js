@@ -74,12 +74,12 @@ const createUserAdmin = async (req, res) => {
     } 
   };
     
-    let repeatEmpresa = await modeloEmpresa.verifyRepeatEmpresa(dataUserAdmin.empresa);
-    if(repeatEmpresa.length>0) return status.ERROR_ALLREADYEXIST(res,'Esta registro de empresa o ruc ya existe');
-     let repeatUser = await modeloUser.verifyRepeatUser(dataUserAdmin.usuario);
-    if(repeatUser.length>0) return status.ERROR_ALLREADYEXIST(res,'Este usuario ya existe');
-    let repeatPerson = await modelo.Persona.verifyRepeatPerson(dataUserAdmin.persona.ruc, dataUserAdmin.persona.email);
-    if(repeatPerson.length>0) return status.ERROR_ALLREADYEXIST(res,'ruc o email ya existen');
+    // let repeatEmpresa = await modeloEmpresa.verifyRepeatEmpresa(dataUserAdmin.empresa);
+    // if(repeatEmpresa.length>0) return status.ERROR_ALLREADYEXIST(res,'Esta registro de empresa o ruc ya existe');
+    //  let repeatUser = await modeloUser.verifyRepeatUser(dataUserAdmin.usuario);
+    // if(repeatUser.length>0) return status.ERROR_ALLREADYEXIST(res,'Este usuario ya existe');
+    // let repeatPerson = await modelo.Persona.verifyRepeatPerson(dataUserAdmin.persona.ruc, dataUserAdmin.persona.email);
+    // if(repeatPerson.length>0) return status.ERROR_ALLREADYEXIST(res,'ruc o email ya existen');
    
     const t = await inicializarTransaccion();
     
