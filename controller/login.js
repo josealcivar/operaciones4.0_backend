@@ -36,7 +36,8 @@ let refreshTokenList={};
         let passValid = await ModeloUsuario.comparePassword(userdata.password, usuario[0].password);
         if(!passValid) return status.apiAuthError(res, 'password incorrectos');
        
-       let key_secret = process.env.SECRET_KEY;
+       //let key_secret = process.env.SECRET_KEY;
+       let key_secret="0p3r4c10n3$12345678910s";
        console.log(key_secret);
        if(usuario[0].id!= 0){
         let persona = await ModeloPersona.GetPersonById(usuario[0].id);
