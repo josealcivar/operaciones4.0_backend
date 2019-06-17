@@ -14,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
 
     razonsocial: {
       type : DataTypes.STRING,
+      unique: true,
       allowNull : false
     },
      nombrecomercial: {
@@ -22,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       ruc: {
         type : DataTypes.STRING,
+        unique: true,
         allowNull : false
       },
       representantelegal: {

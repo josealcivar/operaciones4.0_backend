@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 
     username: {
       type : DataTypes.STRING,
+      unique: true,
       allowNull : false
     },
      password: {
@@ -61,6 +62,7 @@ Usuario.verifyUser = function(usuario){
     return new Promise((resolve, reject)=>{
       if(!usuario.username){return reject(errors.SEQUELIZE_VALIDATION_ERROR('no ingreso username'));}
       if(!usuario.password){return reject(errors.SEQUELIZE_VALIDATION_ERROR('no ingreso password'));}
+      if(dataUser.password.length<6){  return status.error(res, 'password debe ser mayor a 6 digitos')};
       
       return Usuario.findAll({
             where:{
@@ -73,6 +75,7 @@ Usuario.verifyUser = function(usuario){
         if(!user) return reject(user);
         return resolve(user);
       }).catch(fail=>{
+        console.log(fail);
         return reject(errors.ERROR_HANDLER(fail));
       });
     });

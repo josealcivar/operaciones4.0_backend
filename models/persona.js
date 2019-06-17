@@ -22,10 +22,12 @@ module.exports = function(sequelize, DataTypes) {
       },
       ruc: {
         type : DataTypes.STRING,
+        unique: true,
         allowNull : false
       },
       email: {
         type : DataTypes.STRING,
+        unique: true,
         allowNull : true
       },
       telefono: {

@@ -15,14 +15,14 @@ const modelo = require('../models');
  */
 
 const createUser = async (req,res) => {
-     console.log(req.body);
+     
     const dataUser = {
         username: req.body.username,
         password: req.body.password, 
         tipo: req.body.tipo,  
         estado: true
     };
-
+    
     let repeat = await modeloUser.verifyRepeatUser(dataUser);
     if(repeat.length>0) return status.ERROR_ALLREADYEXIST(res,'Este registro ya existe');
     const t = await inicializarTransaccion();
@@ -73,9 +73,11 @@ const createUserAdmin = async (req, res) => {
       estado       : true
     } 
   };
-    
-    // let repeatEmpresa = await modeloEmpresa.verifyRepeatEmpresa(dataUserAdmin.empresa);
-    // if(repeatEmpresa.length>0) return status.ERROR_ALLREADYEXIST(res,'Esta registro de empresa o ruc ya existe');
+
+    //if(dataUserAdmin.empresa.ruc.length!=10 && dataUserAdmin.empresa.ruc.length!=13) return status.error(res, 'password debe ser mayor a 6 digitos');
+  
+   // let repeatEmpresa = await modeloEmpresa.verifyRepeatEmpresa(dataUserAdmin.empresa);
+   // if(repeatEmpresa.length>0) return status.ERROR_ALLREADYEXIST(res,'Esta registro de empresa o ruc ya existe');
     //  let repeatUser = await modeloUser.verifyRepeatUser(dataUserAdmin.usuario);
     // if(repeatUser.length>0) return status.ERROR_ALLREADYEXIST(res,'Este usuario ya existe');
     // let repeatPerson = await modelo.Persona.verifyRepeatPerson(dataUserAdmin.persona.ruc, dataUserAdmin.persona.email);
