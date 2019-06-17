@@ -51,7 +51,7 @@ let refreshTokenList={};
        console.log(process.env.SESSION_DURATION);
        let duration = process.env.SESSION_DURATION;
 
-       const token = jwt.sign(payload, key_secret,{expiresIn:5000});
+       const token = jwt.sign(payload, key_secret,{expiresIn:60*60*24});
 
         req.session = token;
         req.headers['Authorization']=token;
@@ -63,6 +63,8 @@ let refreshTokenList={};
             }); 
         
     }catch(fail){
+        console.log("fail");
+        console.log(fail);
         return status.ERROR_SERVIDOR(res, fail.errors);
     }
  }
